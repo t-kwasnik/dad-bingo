@@ -1,12 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -24,10 +15,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +22,110 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.title_row {
+  font-size: 4vw;
+  margin: auto;
+  min-width: 2vw;
+  max-width: 2vw;
+}
+
+.app_title_font {
+  font-family: 'Sriracha', cursive;
+}
+
+.active_square {
+  background: red;
+}
+
+.square_text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.square_check_box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 10px;
+}
+
+.bit_square_text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+#square_0 {
+  padding:1px;
+}
+
+#square_1 {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+#square_2 {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+#square_3 {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+#square_4 {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.active_square {
+  background: #228B22;
+}
+
+.inactive_square {
+  background: #606060;
+}
+
+.square {
+  color: white;
+  min-height: 9vw;
+  max-height: 9vw;
+  min-width: 9vw;
+  max-width: 9vw;
+  line-height: 1.7vw;
+  margin: auto;
+  font-size: 1.1vw;
+  padding: .4vw;
+  
+}
+
+.big_square {
+  color: white;
+  background: #606060;
+  min-height: 15vw;
+  max-height: 15vw;
+  min-width: 15vw;
+  max-width: 15vw;
+  line-height: 1.9vw;
+  margin: auto;
+  font-size: 1.3vw;
+  font-size: 1.8vw;
+  padding: .4vw;
+  
+}
+
+.square:before{
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+
+.border-right {
+  border-right: 1px solid black;
 }

@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import UserHome from './UserHome';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import {
+  LoginMenu,
+  JoinMenu
+} from "./NavBar";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+     return (
+     <div className="DadBingo">
+        <div>
+          <Router>
+          <Switch>
+              <Route path="/login">
+                <LoginMenu/>
+              </Route>
+              <Route path="/new">
+                <JoinMenu/>
+              </Route>
+              
+              <Route path="/home/:user_id" render={(props) => <UserHome {...props} /> } />
+              <Route  path="/" >
+              </Route>
+            </Switch>
+          </Router>
+         </div>
+        
+      </div>
+     )
+  }  
 
 export default App;
