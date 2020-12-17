@@ -1,5 +1,6 @@
 import './App.css';
 import UserHome from './UserHome';
+import MainScreen from './MainScreen';
 
 import {
   BrowserRouter as Router,
@@ -19,15 +20,16 @@ function App() {
         <div>
           <Router>
           <Switch>
-              <Route path="/login">
+              <Route path="/continue">
                 <LoginMenu/>
               </Route>
-              <Route path="/new">
+              <Route path="/join">
                 <JoinMenu/>
               </Route>
               
               <Route path="/home/:user_id" render={(props) => <UserHome {...props} /> } />
               <Route  path="/" >
+                <MainScreen/>
               </Route>
             </Switch>
           </Router>

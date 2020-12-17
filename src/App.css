@@ -1,4 +1,4 @@
-@media (prefers-reduced-motion: no-preference) {
+x@media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -35,9 +35,6 @@
   font-family: 'Sriracha', cursive;
 }
 
-.active_square {
-  background: red;
-}
 
 .square_text {
     overflow: hidden;
@@ -62,48 +59,65 @@
 
 #square_0 {
   padding:1px;
+  min-width: 10vw;
+  max-width: 10vw;
 }
 
 #square_1 {
   padding-left: 1px;
   padding-right: 1px;
+  min-width: 10vw;
+  max-width: 10vw;
 }
 
 #square_2 {
   padding-left: 1px;
   padding-right: 1px;
+  min-width: 10vw;
+  max-width: 10vw;
 }
 
 #square_3 {
   padding-left: 1px;
   padding-right: 1px;
+  min-width: 10vw;
+  max-width: 10vw;
 }
 
 #square_4 {
   padding-left: 1px;
   padding-right: 1px;
+  min-width: 10vw;
+  max-width: 10vw;
 }
 
 .active_square {
   background: #228B22;
+  border-radius: 10px;
 }
 
 .inactive_square {
   background: #606060;
+
 }
 
 .square {
   color: white;
   min-height: 9vw;
   max-height: 9vw;
-  min-width: 9vw;
-  max-width: 9vw;
+  min-width: 82%;
+  max-width: 82%;
+  width:90%;
+  display: inline-block;
   line-height: 1.7vw;
   margin: auto;
   font-size: 1.1vw;
   padding: .4vw;
+
   
 }
+
+
 
 .big_square {
   color: white;
@@ -120,12 +134,105 @@
   
 }
 
-.square:before{
-    content: "";
-    display: inline-block;
-    width: 100%;
-}
 
 .border-right {
   border-right: 1px solid black;
+}
+
+.small_square {
+  color: white;
+  min-height: 1vw;
+  max-height: 1vw;
+  
+  line-height: 0.3vw;
+  margin: 0.1vw;
+  font-size: 0.3vw;
+  padding: .4vw;
+}
+
+
+.active_small_square {
+  background: #228B22;
+  border-radius: 10px;
+}
+
+.inactive_small_square {
+  background: #606060;
+  border-radius: 10px;
+}
+
+#small_square_0 {
+  padding: 0 0;
+  min-width: 1.5vw;
+  max-width: 1.5vw;
+  height: 100%;
+  
+}
+
+#small_square_1 {
+  padding: 0 0;
+  min-width: 1.5vw;
+  max-width: 1.5vw;
+  
+}
+
+#small_square_2 {
+  padding: 0 0;
+  min-width: 1.5vw;
+  max-width: 1.5vw;
+  
+}
+
+#small_square_3 {
+ padding: 0 0;
+  min-width: 1.5vw;
+  max-width: 1.5vw;
+  
+}
+
+#small_square_4 {
+  padding: 0 0;
+  min-width: 1.5vw;
+  max-width: 1.5vw;
+  
+}
+
+#griswold {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+#griswold img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#login_form {
+  position: relative;
+}
+
+#DadBingoNavBarMainPage .navbar{
+  position: absolute;
+  width: 100%;
+  z-index: 15;
+  top: 18vw;
+  left: 0vw;
+  margin: 0vw 0 0 0vw;
+  background: red;
+}
+
+.no_new_line {
+  display: inline;
+}
+
+#alignRight {
+  float: right;
 }

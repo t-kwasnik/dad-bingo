@@ -14,10 +14,6 @@ class Square extends React.Component {
         };
     }
 
-
-
-  
-  
   handleDoubleClick(){
     const currentState = this.state.active_big_box;
     this.setState({ active_big_box: !currentState });
@@ -49,8 +45,10 @@ class Square extends React.Component {
   render() {
       return (
         <div className={this.props.active_dadisms.includes(this.props.dadism._id) ? 'active_square': 'inactive_square'}>
-        <div className="square_check_box" onClick={this.handleClick.bind(this)}><FontAwesomeIcon icon={this.state.happened ? faToggleOn: faToggleOff} /></div>
         <div className={this.state.active_big_box ? 'big_square': 'square'}  onDoubleClick = {this.handleDoubleClick.bind(this)} >
+        {(this.props.dadism._id !== "FreeSpace") ? (
+          <div className="square_check_box" onClick={this.handleClick.bind(this)}><FontAwesomeIcon icon={this.props.active_dadisms.includes(this.props.dadism._id)===false ? faToggleOff: faToggleOn} /></div>
+        ) : (<div></div>)}
           <div  className={this.state.active_big_box ? 'big_square_text': 'square_text'}>{this.props.dadism.content}</div>
         </div>
         </div>)
