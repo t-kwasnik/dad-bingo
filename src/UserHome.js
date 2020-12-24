@@ -5,6 +5,7 @@ import ActionsList from './ActionsList';
 import Leaderboard from './Leaderboard';
 import PlayerStatus from './PlayerStatus';
 import BingoBoard from './BingoBoard.js'
+import WinModal from './WinModal.js'
 
 
 import Container from 'react-bootstrap/Container';
@@ -20,6 +21,7 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
 import { DadBingoNavBar, NewSayingModal } from './NavBar'
 import _ from "underscore";
+import fetch from 'cross-fetch' 
 
 
 class UserHome extends React.Component {
@@ -48,11 +50,14 @@ class UserHome extends React.Component {
               .then(response => response.json())
               .then((response) =>{
                 var active_dadisms = response.active_dadisms
+                if (active_dadisms === undefined){
+                  active_dadisms = []
+                }
                 active_dadisms.push("FreeSpace")
                 var sayings = []
                 var actions = []
                 var user_id = this.props.match.params.user_id
-                var game_id = response.game_id
+                var game_id = response._id
                 this.setState({game_loaded: game_id===undefined})
                 _(response.dadisms).each(function(dadism, i){
                   if (dadism.type === 'saying'){
@@ -65,20 +70,20 @@ class UserHome extends React.Component {
                 var other_current_boards = []
                 var current_board = ''
                 _(response.user_boards).each(function(user_board){
-                  let newBoard = []
-                  let player_id = user_board.user_id
+                  var newBoard = []
+                  var player_id = user_board.user_id
                   _(user_board.board).each(function(square_id, idx){
                     
                     if (idx===12) {
                       newBoard.push({'_id':"FreeSpace",'content':"Free Space.. we know, nothing is 'free'..."})
                     }
-                    let dadism = _.find(response.dadisms, 
+                    var dadism = _.find(response.dadisms, 
                             function (dadism) { 
                                 return dadism._id=== square_id; 
                             }); 
                     newBoard.push(dadism)
                   })
-                  let user_name = _.where(response.players, {user_id: player_id})[0].name
+                  var user_name = _.where(response.players, {user_id: player_id})[0].name
                   if (user_id==user_board.user_id) {
                     current_board = {user_name: user_name, board: newBoard}
                   } else {
@@ -90,7 +95,27 @@ class UserHome extends React.Component {
                 var board_resets = _.where(response.player_resets, {user_id: user_id})[0].resets
                 var leaderboard = response.leaderboard
                 var players = response.players
+                var winners = response.final_winners
+                var game_over = false
+                var isWinner
+                var winnerName 
+                if (response.final_winners!==undefined){
+                  game_over = true
+                  isWinner = response.final_winners.includes(user_id)
+                  _.each(response.final_winners, function(winner){
+                    var winner_name = _.where(response.players, {user_id: winner})[0].name
+                    if (winnerName===undefined){
+                      winnerName = winner_name
+                    } else {
+                      winnerName = winnerName + ' and ' + winner_name
+                    }
+                  })
+                }
                 this.setState({
+                          game_over: game_over,
+                          isWinner: isWinner,
+                          winners: winners,
+                          winnerName: winnerName,
                           board_resets: board_resets,
                           user_name: user_name,
                           user_id: user_id,
@@ -165,6 +190,7 @@ class UserHome extends React.Component {
           <div className="dadBingoContainer">
           <DadBingoNavBar logged_in={true} user_id={this.state.user_id} user_name={this.state.user_name} board_resets={this.state.board_resets}/>
           <Container fluid>
+          <WinModal isWinner={this.state.isWinner} winnerName={this.state.winnerName}/>
           <Row>
             <Col  xs={3} className="border-right">
             <div >
@@ -241,7 +267,8 @@ class UserHome extends React.Component {
             <div >
               <BingoBoard dadisms={this.state.current_board} 
                           active_dadisms={this.state.active_dadisms}  
-                          game_id={this.state.game_id}/>
+                          game_id={this.state.game_id}
+                          game_over={this.state.game_over}/>
             </div>
             </Col>
             <Col xs={2}>

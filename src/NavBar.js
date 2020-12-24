@@ -12,7 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Badge from 'react-bootstrap/Badge';
 
-
+import fetch from 'cross-fetch' 
 
 import griswold from "./griswold.jpeg";
 

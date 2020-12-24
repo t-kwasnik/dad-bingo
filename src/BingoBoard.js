@@ -5,8 +5,6 @@ import Col from 'react-bootstrap/Col';
 
 class BingoBoard extends React.Component {
 
-  
-  
   render() {
       if (this.props.dadisms !== undefined){
         if (this.props.dadisms.board.length > 0){
@@ -24,35 +22,40 @@ class BingoBoard extends React.Component {
           <Row>
           <Col></Col>
           {this.props.dadisms.board.slice(0,5).map( (dadism,idx) => {
-            return <Col md={2} id={"square_" + idx} ><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id}/></Col> })}
+            return (
+              <Col md={2} id={"square_" + idx} >
+                <Square dadism={dadism} active_dadisms={this.props.active_dadisms}  game_id={this.props.game_id} game_over={this.props.game_over} />
+              </Col> )
+            })
+          }
           <Col></Col>
           </Row>
           
           <Row>
           <Col></Col>
           {this.props.dadisms.board.slice(5,10).map( (dadism,idx) => {
-            return <Col md={2} id={"square_" + idx} className="square_col"><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id}/></Col> })}
+            return (<Col md={2} id={"square_" + idx} ><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id} game_over={this.props.game_over} /></Col> )})}
           <Col></Col>
           </Row>
         
           <Row>
           <Col></Col>
           {this.props.dadisms.board.slice(10,15).map( (dadism,idx) => {
-            return <Col md={2} id={"square_" + idx} className="square_col"><Square dadism={dadism} active_dadisms={this.props.active_dadisms}  game_id={this.props.game_id}/></Col> })}
+            return (<Col md={2} id={"square_" + idx} ><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id} game_over={this.props.game_over} /></Col> )})}
           <Col></Col>
           </Row>
         
           <Row>
           <Col></Col>
           {this.props.dadisms.board.slice(15,20).map( (dadism,idx) => {
-            return <Col md={2} id={"square_" + idx} className="square_col"><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id}/></Col> })}
+            return (<Col md={2} id={"square_" + idx} ><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id} game_over={this.props.game_over} /></Col> )})}
           <Col></Col>
           </Row>
         
           <Row>
           <Col></Col>
           {this.props.dadisms.board.slice(20,25).map( (dadism,idx) => {
-            return <Col md={2} id={"square_" + idx}className="square_col"><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id}/></Col> })}
+            return (<Col md={2} id={"square_" + idx} ><Square dadism={dadism} active_dadisms={this.props.active_dadisms} game_id={this.props.game_id} game_over={this.props.game_over} /></Col> )})}
           <Col></Col>
           </Row>
           
